@@ -22,8 +22,15 @@ export interface InvoiceData {
     location: string;
   };
   payment: {
-    method: string;
-    link: string;
+    type: 'link' | 'bank';
+    method?: string; // e.g. "Takenos" or "Bank Transfer"
+    link?: string;
+    // Bank Fields
+    bankName?: string;
+    accountName?: string;
+    accountNumber?: string; // IBAN / CBU / Acc No
+    routingNumber?: string; // SWIFT / Alias / Routing
+    additionalBankInfo?: string; // Address, Type, etc.
     rate: number;
   };
   items: InvoiceItem[];
