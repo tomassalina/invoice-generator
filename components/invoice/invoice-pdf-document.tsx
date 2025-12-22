@@ -139,11 +139,11 @@ const styles = StyleSheet.create({
     color: '#94a3b8',
     textTransform: 'uppercase',
   },
-  // Grid columns (mocking 12 grid system)
-  col2: { width: '16.66%' },
-  col7: { width: '58.33%' },
-  col1: { width: '8.33%' },
-  col3: { width: '25%' },
+  // Grid columns (corrected to 100%)
+  col2: { width: '25%' }, // Increased to give Date more room
+  col7: { width: '45%' }, // Reduced slightly
+  col1: { width: '10%' },
+  col3: { width: '20%' },
 
   tableRow: {
     flexDirection: 'row',
@@ -153,22 +153,23 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   cellDate: {
-    fontSize: 16, // Super Size
+    fontSize: 11, // Reduced from 13
     color: '#64748b',
     fontWeight: 'medium',
+    paddingRight: 16, // Explicit gap
   },
   cellDesc: {
-    fontSize: 16, // Super Size
+    fontSize: 11, // Reduced from 13
     color: '#1e293b',
     lineHeight: 1.4,
   },
   cellHours: {
-    fontSize: 16, // Super Size
+    fontSize: 11, // Reduced from 13
     color: '#475569',
     textAlign: 'right',
   },
   cellAmount: {
-    fontSize: 16, // Super Size
+    fontSize: 11, // Reduced from 13
     fontWeight: 'medium',
     color: '#0f172a',
     textAlign: 'right',
