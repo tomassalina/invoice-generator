@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { InvoiceData } from './types';
-import { InvoiceForm } from './invoice-form';
-import { InvoicePreview } from './invoice-preview';
+import React, { useState } from 'react'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { InvoiceData } from './types'
+import { InvoiceForm } from './invoice-form'
+import { InvoicePreview } from './invoice-preview'
 
 const INITIAL_DATA: InvoiceData = {
   invoiceNumber: 'INV-001',
@@ -17,7 +17,7 @@ const INITIAL_DATA: InvoiceData = {
   sender: {
     name: 'Tomas Salina',
     email: 'salinatomass53@gmail.com',
-    website: 'tomassalina.netlify.app',
+    website: 'tomassalina.com',
     role: 'Software Engineer',
   },
   recipient: {
@@ -28,15 +28,15 @@ const INITIAL_DATA: InvoiceData = {
     location: 'City, Country',
   },
   payment: {
-    type: 'link',
+    type: 'bank',
     method: 'Takenos',
-    link: 'https://app.takenos.com/pay/...',
+    link: 'https://app.takenos.com/pay/91a952a9-cfe5-4412-bf5f-1979bf79fe8a',
     bankName: 'Lead Bank',
-    accountName: 'Tomas Ezequiel Salina',
-    accountNumber: '211945505146',
+    accountName: 'Tomas Salina',
+    accountNumber: '215114202018',
     routingNumber: '101019644',
     additionalBankInfo:
-      'Account Type: Personal checking\nBank Address: 1801 Main St., Kansas City, MO, 64108',
+      'Account Type: Personal checking\nBank Address: 1801 Main St., Kansas City, Missouri 64108, United States',
     rate: 50,
   },
   items: [
@@ -51,36 +51,36 @@ const INITIAL_DATA: InvoiceData = {
       hours: 10,
     },
   ],
-};
+}
 
 export function InvoiceGenerator() {
-  const [data, setData] = useState<InvoiceData>(INITIAL_DATA);
-  const [isMounted, setIsMounted] = useState(false);
+  const [data, setData] = useState<InvoiceData>(INITIAL_DATA)
+  const [isMounted, setIsMounted] = useState(false)
 
   // Load from local storage on mount
   React.useEffect(() => {
-    setIsMounted(true);
-    const saved = localStorage.getItem('invoice-generator-data');
+    setIsMounted(true)
+    const saved = localStorage.getItem('invoice-generator-data')
     if (saved) {
       try {
-        const parsed = JSON.parse(saved);
+        const parsed = JSON.parse(saved)
         // Ensure we merge with defaults to avoid missing keys if structure changed
-        setData((prev) => ({ ...prev, ...parsed }));
+        setData(prev => ({ ...prev, ...parsed }))
       } catch (e) {
-        console.error('Failed to parse local storage', e);
+        console.error('Failed to parse local storage', e)
       }
     }
-  }, []);
+  }, [])
 
   // Save to local storage on change
   React.useEffect(() => {
     if (isMounted) {
-      localStorage.setItem('invoice-generator-data', JSON.stringify(data));
+      localStorage.setItem('invoice-generator-data', JSON.stringify(data))
     }
-  }, [data, isMounted]);
+  }, [data, isMounted])
 
   if (!isMounted) {
-    return null; // or a skeleton loader
+    return null // or a skeleton loader
   }
 
   return (
@@ -99,5 +99,5 @@ export function InvoiceGenerator() {
         </TabsContent>
       </Tabs>
     </div>
-  );
+  )
 }
